@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="OS" default="quick" basedir=".">
+
+	<property name="dir.src" value="${basedir}/src"/>
+	<property name="dir.bin" value="${basedir}/bin"/>
+	<property name="package.jar" value="${basedir}/os.jar"/>
+	
+	<available file="${package.jar}" property="exists.jar" value="x"/>
+
+	<target name="all" depends="clean,build,package">
+	</target>
+	
+    <target name="quick" depends="build,package">
+    </target>
+	
+	<target name="clean">
+		<delete dir="${dir.bin}" quiet="true"/>
+		<mkdir dir="${dir.bin}"/>
+	</target>
+
+    <target name="build">
+    	<javac srcdir="${dir.src}" destdir="${dir.bin}"/>
+    </target>
+	
+	<target name="package" depends="removejar">
+		<jar basedir="${dir.bin}" file="${package.jar}"/>
+	</target>
+	
+	<target name="removejar" if="exists.jar">
+		<delete file="${package.jar}"/>
+	</target>
+
+</project>
