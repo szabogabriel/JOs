@@ -1,4 +1,4 @@
 /bin
 .classpath
 .project
-os.jar
+/target/os*jar
