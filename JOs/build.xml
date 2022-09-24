@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="OS" default="quick" basedir=".">
 
+	<property name="version" value="0.0.1_SNAPSHOT"/>
 	<property name="dir.src" value="${basedir}/src"/>
 	<property name="dir.bin" value="${basedir}/bin"/>
-	<property name="package.jar" value="${basedir}/os.jar"/>
+	<property name="dir.target" value="${basedir}/target"/>
+	<property name="package.jar" value="${dir.target}/os_${version}.jar"/>
 	
 	<available file="${package.jar}" property="exists.jar" value="x"/>
 
