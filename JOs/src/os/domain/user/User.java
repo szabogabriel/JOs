@@ -1,11 +1,14 @@
 package os.domain.user;
 
+import java.io.File;
+
 public class User {
 
 	private int userId;
 	private String username;
 	private Group group;
 	private Group[] groups;
+	private File homeFolder;
 
 	public User() {
 
@@ -45,6 +48,14 @@ public class User {
 
 	public Group[] getGroups() {
 		return groups;
+	}
+	
+	public void setHomeFolder(File folder) {
+		this.homeFolder = folder;
+	}
+	
+	public File getHomeFolder() {
+		return homeFolder;
 	}
 
 	@Override
