@@ -1,7 +1,7 @@
 package os.domain.system.process;
 
 import java.time.Duration;
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 import os.domain.user.User;
@@ -12,7 +12,7 @@ public class Process {
 	private User user;
 	private int parentPid;
 	private String processClass;
-	private LocalTime startTime;
+	private LocalDateTime startDateTime;
 	private String tty;
 	private Duration duration;
 	private String command;
@@ -53,12 +53,12 @@ public class Process {
 		this.processClass = processClass;
 	}
 
-	public LocalTime getStartTime() {
-		return startTime;
+	public LocalDateTime getStartDateTime() {
+		return startDateTime;
 	}
 
-	public void setStartTime(LocalTime startTime) {
-		this.startTime = startTime;
+	public void setStartLocalDateTime(LocalDateTime startTime) {
+		this.startDateTime = startTime;
 	}
 
 	public String getTty() {
@@ -88,12 +88,12 @@ public class Process {
 	@Override
 	public String toString() {
 		return "Process [pid=" + pid + ", user=" + user + ", parentPid=" + parentPid + ", processClass=" + processClass
-				+ ", startTime=" + startTime + ", tty=" + tty + ", duration=" + duration + ", command=" + command + "]";
+				+ ", startTime=" + startDateTime + ", tty=" + tty + ", duration=" + duration + ", command=" + command + "]";
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(command, duration, parentPid, pid, processClass, startTime, tty, user);
+		return Objects.hash(command, duration, parentPid, pid, processClass, startDateTime, tty, user);
 	}
 
 	@Override
@@ -107,7 +107,7 @@ public class Process {
 		Process other = (Process) obj;
 		return Objects.equals(command, other.command) && Objects.equals(duration, other.duration)
 				&& parentPid == other.parentPid && pid == other.pid && Objects.equals(processClass, other.processClass)
-				&& Objects.equals(startTime, other.startTime) && Objects.equals(tty, other.tty)
+				&& Objects.equals(startDateTime, other.startDateTime) && Objects.equals(tty, other.tty)
 				&& Objects.equals(user, other.user);
 	}
 

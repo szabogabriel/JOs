@@ -3,7 +3,7 @@ package os.domain.system.process.list;
 import java.io.BufferedReader;
 import java.io.StringReader;
 import java.time.Duration;
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import os.domain.Command;
@@ -53,9 +53,9 @@ public class ProcessCommandList extends Command<List<Process>> {
 				case 1 : ret.setPid(Integer.parseInt(buffer)); buffer = ""; break;
 				case 2 : ret.setParentPid(Integer.parseInt(buffer)); buffer = ""; break;
 				case 3 : ret.setProcessClass(buffer); buffer = ""; break;
-				case 4 : /*ret.setStartTime(LocalTime.parse(buffer)); */ buffer = ""; break; //TODO
+				case 4 : ret.setStartLocalDateTime(parseCreateDateTime(buffer)); buffer = ""; break;
 				case 5 : ret.setTty(buffer); buffer = ""; break;
-				case 6 : /* ret.setDuration(Duration.parse(buffer)); */ buffer = ""; break; //TODO
+				case 6 : ret.setDuration(parseDuration(buffer)); buffer = ""; break;
 				default : buffer += " "; break;
 				}
 			} else {
@@ -66,6 +66,16 @@ public class ProcessCommandList extends Command<List<Process>> {
 		ret.setCommand(buffer);
 		
 		return ret;
+	}
+	
+	private Duration parseDuration(String duration) {
+		//TODO: parse duration
+		return null;
+	}
+	
+	private LocalDateTime parseCreateDateTime(String resource) {
+		//TODO: parse the create date time
+		return null;
 	}
 	
 	private User getUserByName(String username) {
