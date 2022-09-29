@@ -8,7 +8,7 @@ import os.domain.user.Group;
 import os.domain.user.User;
 
 public class UserCommandIdentify extends Command<User> {
-
+	
 	@Override
 	public String getCommand() {
 		return "id";
