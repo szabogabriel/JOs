@@ -1,8 +1,10 @@
 package os;
 
-import java.util.List;
+import java.util.stream.Collectors;
 
-import os.domain.system.process.list.ProcessOperationList;
+import os.domain.user.User;
+import os.domain.user.Users;
+import os.domain.user.list.UserOperationList;
 
 public class Test {
 	
@@ -17,19 +19,19 @@ public class Test {
 //		System.out.println("Username: " + user.getUsername());
 //		
 //		System.out.println("---");
-//		Users users = Os.getOperation(UserOperationList.class).execute();
-//		System.out.println("Number of users: " + users.getUsers().size());
-//		System.out.println("Users: " + users.getUsers().stream().map(User::getUsername).collect(Collectors.joining(", ")));
+		Users users = Os.getOperation(UserOperationList.class).execute();
+		System.out.println("Number of users: " + users.getUsers().size());
+		System.out.println("Users: " + users.getUsers().stream().map(User::getUsername).collect(Collectors.joining(", ")));
 //	
 //		WifiOperationConnect connect = Os.getOperation(WifiOperationConnect.class);
 //		connect.setTargetNetwork("SID", "Password");
 //		Wifi wifi2 = connect.execute();
 //		System.out.println("Is connected: " + wifi2.getActiveNetwork().get().getSsid());
 		
-		ProcessOperationList pol = Os.getOperation(ProcessOperationList.class);
-		pol.setTargetUsername("root");
-		List<Process> processes = pol.execute();
-		System.out.println("Number of found root processes: " + processes.size());
+//		ProcessOperationList pol = Os.getOperation(ProcessOperationList.class);
+//		pol.setTargetUsername("root");
+//		List<Process> processes = pol.execute();
+//		System.out.println("Number of found root processes: " + processes.size());
 	}
 
 }

@@ -31,8 +31,8 @@ public abstract class Operation<T> {
 		return context;
 	}
 	
-	protected abstract Command<T>[] createCommands();
+	public abstract Command<T>[] createCommands();
 	
-	protected abstract T createContext();
+	public abstract T createContext();
 	
 }

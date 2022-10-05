@@ -21,7 +21,7 @@ public class UserOperationAdd extends Operation<User> {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	protected Command<User>[] createCommands() {
+	public Command<User>[] createCommands() {
 		return new Command[]{
 				new UserCommandAddAdd(),
 				new UserCommandAddSetId()
@@ -29,7 +29,7 @@ public class UserOperationAdd extends Operation<User> {
 	}
 
 	@Override
-	protected User createContext() {
+	public User createContext() {
 		return targetUser;
 	}
 

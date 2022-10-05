@@ -24,7 +24,7 @@ public class WifiOperationConnect extends Operation<Wifi> {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	protected Command<Wifi>[] createCommands() {
+	public Command<Wifi>[] createCommands() {
 		if (ssid == null || password == null) {
 			throw new NullPointerException("No target network set.");
 		}
@@ -33,7 +33,7 @@ public class WifiOperationConnect extends Operation<Wifi> {
 	}
 
 	@Override
-	protected Wifi createContext() {
+	public Wifi createContext() {
 		return new Wifi();
 	}
 

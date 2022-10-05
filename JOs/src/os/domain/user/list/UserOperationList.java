@@ -15,12 +15,12 @@ public class UserOperationList extends Operation<Users>{
 
 	@SuppressWarnings("unchecked")
 	@Override
-	protected Command<Users>[] createCommands() {
-		return new Command[] {new UserCommandListNames()};
+	public Command<Users>[] createCommands() {
+		return new Command[] {new UserCommandListNames(), new UserCommandListDetails()};
 	}
 
 	@Override
-	protected Users createContext() {
+	public Users createContext() {
 		return new Users();
 	}
 

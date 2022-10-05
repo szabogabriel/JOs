@@ -15,12 +15,12 @@ public class WifiOperationIdentify extends Operation<Wifi> {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	protected Command<Wifi>[] createCommands() {
+	public Command<Wifi>[] createCommands() {
 		return new Command[] {new WifiCommandEnabled(), new WifiCommandList()};
 	}
 
 	@Override
-	protected Wifi createContext() {
+	public Wifi createContext() {
 		return new Wifi();
 	}
 

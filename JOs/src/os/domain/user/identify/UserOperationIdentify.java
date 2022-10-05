@@ -15,12 +15,12 @@ public class UserOperationIdentify extends Operation<User> {
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	protected Command<User>[] createCommands() {
+	public Command<User>[] createCommands() {
 		return new Command[] {new UserCommandIdentify()};
 	}
 
 	@Override
-	protected User createContext() {
+	public User createContext() {
 		return new User();
 	}
 

@@ -25,12 +25,12 @@ public class ProcessOperationList extends Operation<List<Process>> {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	protected Command<List<Process>>[] createCommands() {
+	public Command<List<Process>>[] createCommands() {
 		return new Command[] {new ProcessCommandList(username)};
 	}
 
 	@Override
-	protected List<Process> createContext() {
+	public List<Process> createContext() {
 		return context;
 	}
 

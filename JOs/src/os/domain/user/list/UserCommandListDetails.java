@@ -1,4 +1,4 @@
-package os.domain.user.identify;
+package os.domain.user.list;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,32 +6,38 @@ import java.util.List;
 import os.domain.Command;
 import os.domain.user.Group;
 import os.domain.user.User;
+import os.domain.user.Users;
 
-public class UserCommandIdentify extends Command<User> {
-	
-	private String username;
-	
-	public UserCommandIdentify() {
-		this(null);
-	}
-	
-	public UserCommandIdentify(String username) {
-		this.username = username;
-	}
-	
+public class UserCommandListDetails extends Command<Users> {
+
 	@Override
 	public String getCommand() {
-		return "id" + ((username != null) ? " username" : "");
+		Users context = getContext();
+		StringBuilder sb = new StringBuilder();
+
+		List<User> users = context.getUsers();
+		for (int i = 0; i < users.size(); i++) {
+			sb.append("id " + users.get(i).getUsername());
+			if (i + 1 < users.size()) {
+				sb.append(" ; ");
+			}
+		}
+
+		return sb.toString();
 	}
 
 	@Override
-	public void parseResult(String response) {
-		parseIdLine(response, getContext());
+	public void parseResult(String content) {
+		List<User> users = getContext().getUsers();
+		String [] lines = content.split("\\n");
+		for (int i = 0; i < lines.length; i++) {
+			parseIdLine(lines[i], users.get(i));
+		}
 	}
-	
+
 	private void parseIdLine(String line, User user) {
 		String[] tmp = line.split(" ");
-		
+
 		for (String it : tmp) {
 			if (it.startsWith("uid")) {
 				String[] tmp2 = it.substring(4).split("[\\(]");
